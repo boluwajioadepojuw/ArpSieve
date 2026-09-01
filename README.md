@@ -1,6 +1,5 @@
 # LinkSentry
 
-[![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A lightweight Python-based ARP spoofing detection tool. Monitors ARP traffic on the local network segment
 and alerts when ARP cache poisoning or man-in-the-middle attacks are detected.
