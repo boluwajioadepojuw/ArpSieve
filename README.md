@@ -1,4 +1,4 @@
-# FrameSentinel
+# LinkSentry
 
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)](https://www.python.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -13,7 +13,7 @@ and alerts when ARP cache poisoning or man-in-the-middle attacks are detected.
 - Console and log file alerting
 
 ## How It Works
-FrameSentinel captures ARP packets on the local network interface and maintains a table
+LinkSentry captures ARP packets on the local network interface and maintains a table
 of known MAC-to-IP mappings. When a conflicting ARP announcement is detected (two
 different MAC addresses claiming the same IP), an alert is raised indicating a
 potential ARP spoofing attack in progress.
