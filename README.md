@@ -35,3 +35,15 @@ python3 arp_sentinel.py -f capture.pcap
 
 Boluwaji Oluwaseyi Adepoju
 
+
+## Test captures
+
+`samples/` contains two ARP captures used to validate detection:
+
+- `benign.pcap` -- normal ARP traffic (no alert expected)
+- `poisoned.pcap` -- an ARP cache-poisoning attempt; running the tool on it raises a
+  man-in-the-middle alert
+
+```bash
+python3 arp_sentinel.py -f samples/poisoned.pcap
+```
