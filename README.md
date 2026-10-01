@@ -1,4 +1,4 @@
-# LinkSentry
+# ArpSieve
 
 A small Python tool that watches ARP traffic on the local network
 segment and alerts when something claims an IP address that already
@@ -15,7 +15,7 @@ or man-in-the-middle attack.
 
 ## How it works
 
-LinkSentry captures ARP packets on the local interface and keeps a table
+ArpSieve captures ARP packets on the local interface and keeps a table
 of known MAC-to-IP mappings. When a conflicting ARP announcement shows
 up (two different MAC addresses claiming the same IP), it raises a
 man-in-the-middle alert.
@@ -50,4 +50,20 @@ Boluwaji Oluwaseyi Adepoju
 
 ```bash
 python3 arp_sentinel.py -f samples/poisoned.pcap
+```
+
+## Screenshot
+
+Real alert on the poisoned capture:
+
+![ArpSieve alert](screenshots/arpsieve-alert.png)
+
+## Flow
+
+```mermaid
+flowchart TD
+    A[sniff ARP packets - live or pcap] --> B[track IP to MAC mapping]
+    B --> C{new claim conflicts with known MAC?}
+    C -->|yes| D[ALERT: possible ARP spoofing]
+    C -->|no| E[update mapping]
 ```

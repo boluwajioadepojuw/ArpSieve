@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""LinkSentry -- ARP Spoofing Detection Tool.
+"""ArpSieve -- ARP Spoofing Detection Tool.
 
 Monitors ARP traffic on the local network segment and alerts when ARP cache
 poisoning or man-in-the-middle attacks are detected. Maintains a table of
@@ -109,7 +109,7 @@ def main():
             logging.FileHandler(args.log, encoding="utf-8"),
         ],
     )
-    LOG.info("LinkSentry started (mode=%s)", "pcap" if args.pcap else "live")
+    LOG.info("ArpSieve started (mode=%s)", "pcap" if args.pcap else "live")
     if args.pcap:
         if args.interface:
             parser.error("--interface and --pcap are mutually exclusive")
@@ -138,7 +138,7 @@ def main():
 
     for alert in alerts:
         LOG.warning(alert)
-    LOG.info("LinkSentry finished")
+    LOG.info("ArpSieve finished")
     return 0
 
 
