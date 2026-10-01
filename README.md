@@ -1,5 +1,7 @@
 # ArpSieve
 
+[![CI](https://github.com/boluwajioadepojuw/ArpSieve/actions/workflows/ci.yml/badge.svg)](https://github.com/boluwajioadepojuw/ArpSieve/actions/workflows/ci.yml)
+
 A small Python tool that watches ARP traffic on the local network
 segment and alerts when something claims an IP address that already
 belongs to another MAC. That is the signature of an ARP cache poisoning
@@ -20,14 +22,20 @@ of known MAC-to-IP mappings. When a conflicting ARP announcement shows
 up (two different MAC addresses claiming the same IP), it raises a
 man-in-the-middle alert.
 
+## Install
+
+```bash
+pip install -r requirements.txt    # installs scapy
+```
+
 ## Usage
 
 ```bash
 # Live monitoring (requires root / CAP_NET_RAW):
-sudo python3 arp_sentinel.py -i eth0
+sudo python3 arp_sieve.py -i eth0
 
 # Offline analysis of a capture (no root needed):
-python3 arp_sentinel.py -f capture.pcap
+python3 arp_sieve.py -f capture.pcap
 ```
 
 ## Stack
@@ -49,7 +57,15 @@ Boluwaji Oluwaseyi Adepoju
   it raises the man-in-the-middle alert.
 
 ```bash
-python3 arp_sentinel.py -f samples/poisoned.pcap
+python3 arp_sieve.py -f samples/poisoned.pcap
+```
+
+The same captures back the pytest suite in `tests/` (CI runs them on
+Python 3.11 and 3.12):
+
+```bash
+pip install pytest
+python -m pytest -q
 ```
 
 ## Screenshot
@@ -57,6 +73,16 @@ python3 arp_sentinel.py -f samples/poisoned.pcap
 Real alert on the poisoned capture:
 
 ![ArpSieve alert](screenshots/arpsieve-alert.png)
+
+## Related projects
+
+Part of the same home-SOC stack:
+
+- [SOCAtelier](https://github.com/boluwajioadepojuw/SOCAtelier) - the lab console and detection engine this tool can feed
+- [DomainSieve](https://github.com/boluwajioadepojuw/DomainSieve) - gateway rules from newly registered domains
+- [IocVerdict](https://github.com/boluwajioadepojuw/IocVerdict) - IOC enrichment for the indicators these alerts surface
+- [SigScope](https://github.com/boluwajioadepojuw/SigScope) - ATT&CK coverage gate for the Sigma rules behind the detections
+- [SplunkHarbor](https://github.com/boluwajioadepojuw/SplunkHarbor) - Splunk ingestion lab for the same telemetry
 
 ## Flow
 

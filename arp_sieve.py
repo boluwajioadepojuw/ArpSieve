@@ -22,7 +22,7 @@ from collections import defaultdict
 
 from scapy.all import ARP, Ether, rdpcap, sniff
 
-LOG = logging.getLogger("arpsentinel")
+LOG = logging.getLogger("arpsieve")
 
 
 class ArpMonitor:
@@ -92,8 +92,8 @@ def main():
         "-f", "--pcap", help="analyze an offline PCAP file instead of sniffing"
     )
     parser.add_argument(
-        "-l", "--log", default="arpsentinel.log",
-        help="log file to write alerts to (default: arpsentinel.log)"
+        "-l", "--log", default="arpsieve.log",
+        help="log file to write alerts to (default: arpsieve.log)"
     )
     parser.add_argument(
         "-c", "--count", type=int, default=0,
